@@ -134,7 +134,7 @@ const ChatBot = (props: Props) => {
     user_id,
   }: SendQueryMutationParams) => {
     const response = await axios.post(
-      "/api91/user-request",
+      "http://13.201.33.157:8091/user-request",
       { message, user_id },
     );
     if (response.status === 200) {
@@ -142,7 +142,7 @@ const ChatBot = (props: Props) => {
       while (Date.now() - startTime < 20000) { // 20 seconds timeout
         try {
           const messageResponse = await axios.get(
-            `/api94/user-response?user_id=${user_id}`
+            `http://13.201.33.157:8094/user-response?user_id=${user_id}`
           );
           if (messageResponse.status === 200) {
             console.log(messageResponse);
