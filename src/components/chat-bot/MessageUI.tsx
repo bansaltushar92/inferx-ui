@@ -73,10 +73,10 @@ const MessageUI = React.memo(
                 </div>
               ) : message?.error ? (
                 <div className="flex w-full flex-col items-start gap-2 py-2 text-[#FF0000]">
-                  Oops! Looks like there&apos;s a turbulence in our financial
-                  data stream. <br />
+                  Oops! Looks like there&apos;s a turbulence in our
+                  system. <br />
                   Please retry, and we&apos;ll try to navigate you to smoother
-                  insights. <br />
+                  experience. <br />
                   <span className="text-sm">Error: {message?.error}</span>
                 </div>
               ) : (
