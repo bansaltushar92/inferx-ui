@@ -57,7 +57,7 @@ const MessageUI = React.memo(
               {message.loading && isLoading ? (
                 <div className="flex items-center gap-3">
                   <div>
-                    Analyzing stocks for you! Sit tight, financial insights are
+                    Sit tight, response is
                     on the way!
                   </div>
                   <MagnifyingGlass

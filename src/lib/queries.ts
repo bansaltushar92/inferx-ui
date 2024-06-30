@@ -2,31 +2,31 @@
 export const Queries = [
   {
     id: 1,
-    query: "How many times apple beat earning estimates in the year 2023?",
+    query: "Can you write a love letter to my pizza? It's true love!",
   },
   {
     id: 2,
-    query: "List of stocks with upcoming earnings",
+    query: "If animals could talk, which one would be the rudest?",
   },
   {
     id: 3,
-    query: "Which SP500 stocks are announcing earnings in next 5 days?",
+    query: "Can you come up with a conspiracy theory about why socks disappear in the laundry?",
   },
   {
     id: 4,
-    query: "Find similar companies to Rivian?",
+    query: "What would chairs look like if our knees bent the other way?",
   },
   {
     id: 5,
-    query: "Average price of AAPL in the month of July in year 2023?",
+    query: "Can you write a rap about why Mondays are the worst?",
   },
   {
     id: 6,
-    query: "Give the latest news about Nvidia?",
+    query: "Can you help me name my pet rock?",
   },
   {
     id: 7,
-    query: "List gainer stocks in US market",
+    query: "Can you write a story about a superhero whose only power is making perfect toast?",
   },
 ];
 

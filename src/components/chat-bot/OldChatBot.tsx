@@ -19,15 +19,15 @@ const defaultMessage = {
   id: 1,
   text: `# Welcome to Epoch! 🌟
   
-  Discover the power of informed decision-making with these features:
+  Harness the power of decentralized AI with these cutting-edge features:
+
+  - **Leverage Web3 for AI Inference:** Utilize a decentralized network to perform AI inference efficiently.
   
-  - **Explore New Investment Opportunities:** Identify potential investments using Artificial Intelligence and your own customized criteria.
+  - **Secure and Private:** Ensure your data remains private and secure with blockchain technology.
   
-  - **Leverage Real-time News:** Get key insights into relevant news and events in real-time.
+  - **Customizable AI Models:** Deploy and customize AI models to meet your specific needs and criteria.
   
-  - **Bring Your Own Data:** Leverage latest Artificial Intelligence techniques on your data.
-  
-  \n #### Ready to accelerate your investing adventure? 🚀 `,
+  \n #### Ready to unlock the potential of Epoch? 🚀 `,
   role: "bot",
 };
 
@@ -111,23 +111,55 @@ const ChatBot = (props: Props) => {
   //   return response.data;
   // };
 
+  // const sendQueryMutation = async ({
+  //   message,
+  //   user_id,
+  // }: SendQueryMutationParams) => {
+  //   const response = await axios.post(
+  //     "http://13.201.33.157:8091/user-request",
+  //     { message, user_id },
+  //   );
+  //   if (response.status === 200) {
+  //     const messageResponse = await axios.get(
+  //       `http://13.201.33.157:8094/user-response?user_id=${user_id}`
+  //     );
+  //     console.log(messageResponse);
+  //     return messageResponse.data;
+  //   }
+  //   throw new Error('Failed to send request');
+  // };
+
   const sendQueryMutation = async ({
     message,
     user_id,
   }: SendQueryMutationParams) => {
     const response = await axios.post(
-      "http://127.0.0.1:8091/user-request",
+      "http://13.201.33.157:8091/user-request",
       { message, user_id },
     );
     if (response.status === 200) {
-      const messageResponse = await axios.get(
-        `http://127.0.0.1:8094/user-response?user_id=${user_id}`
-      );
-      console.log(messageResponse);
-      return messageResponse.data;
+      const startTime = Date.now();
+      while (Date.now() - startTime < 20000) { // 20 seconds timeout
+        try {
+          const messageResponse = await axios.get(
+            `http://13.201.33.157:8094/user-response?user_id=${user_id}`
+          );
+          if (messageResponse.status === 200) {
+            console.log(messageResponse);
+            return messageResponse.data;
+          }
+        } catch (error: any) {
+          if (error.response && error.response.status !== 404) {
+            throw new Error('Failed to get response');
+          }
+        }
+        await new Promise(resolve => setTimeout(resolve, 3000)); // Add 3-second delay before retrying
+      }
+      throw new Error('Timeout exceeded while waiting for response');
     }
     throw new Error('Failed to send request');
   };
+  
 
   const { mutate, isError, isSuccess, isLoading } = useMutation(
     sendQueryMutation,
